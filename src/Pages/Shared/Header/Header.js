@@ -7,14 +7,14 @@ const Header = () => {
     <div>
       <Navbar className="color-nav" variant="light" expand={"md"}>
         <Container>
-          <Navbar.Brand href="#home" className="d-flex align-items-center gap-2 fw-bolder">
+          <Navbar.Brand href="#home" className="d-flex align-items-center gap-2 fw-bolder text-dark">
             <img
               alt=""
               src={require('../../../Asset/images/logo-2.png')}
               height="40"
               className="d-inline-block align-top rounded-3"
             />{" "}
-            BAPPI'S CHAMBER
+            BAPPI's CHAMBER
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
