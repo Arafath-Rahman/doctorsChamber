@@ -6,12 +6,11 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <div>
+    <div className="header-bg mb-5">
       <Navbar
-        className="color-nav top-3"
+        className="color-nav top-3 header-bg fixed-top"
         variant="light"
         expand={"md"}
-        sticky="top"
       >
         <Container>
           <Navbar.Brand

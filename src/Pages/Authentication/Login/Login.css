@@ -1,0 +1,51 @@
+.login-container {
+  margin-top: 100px;
+}
+#email,
+#password,
+#submit {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+#submit {
+  background: #b8e5cb;
+  color: #d78e62;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 40px;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 12px;
+}
+
+#submit:hover {
+  background: #d78e62;
+  color: #b8e5cb;
+}
+
+#submit:active {
+  transition: 0.3s all;
+  transform: translateY(3px);
+  border: 1px solid transparent;
+  opacity: 0.8;
+}
+
+input:disabled {
+  opacity: 0.4;
+}
+
+#submit:hover {
+  transition: 0.3s all;
+}
+
+#submit {
+  -webkit-appearance: none;
+}
