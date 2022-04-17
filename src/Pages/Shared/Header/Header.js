@@ -5,7 +5,7 @@ import './Header.css';
 const Header = () => {
   return (
     <div>
-      <Navbar className="color-nav" variant="light" expand={"md"}>
+      <Navbar className="color-nav top-3" variant="light" expand={"md"} sticky="top">
         <Container>
           <Navbar.Brand href="#home" className="d-flex align-items-center gap-2 fw-bolder text-dark">
             <img
