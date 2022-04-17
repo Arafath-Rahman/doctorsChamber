@@ -1,12 +1,12 @@
-.App {
+/* .banner-bg {
   background-image: linear-gradient(
       rgba(255, 255, 255, 0),
       rgba(195, 255, 210, 0.616)
     ),
-    url("./Asset/images/abstract.jpg");
-  height: 100vh;
+    url("../../../Asset/images/abstract.jpg");
+  height: auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-}
+} */
