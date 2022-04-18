@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Service.css";
 
 const Service = ({ service }) => {
@@ -27,14 +27,13 @@ const Service = ({ service }) => {
         <div className="card-footer">
           <Link
             className="btn text-decoration-none text-dark fw-bold"
-            to={`/checkout/${id}`}
+            to={`/checkout/${name}`}
             id="btn-select"
           >
             Select Service
           </Link>
         </div>
       </div>
-      <Outlet />
     </div>
   );
 };

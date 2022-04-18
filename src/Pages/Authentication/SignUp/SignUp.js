@@ -34,7 +34,7 @@ const SignUp = () => {
       toastId: 'success1',
     });
     reset();
-    navigate("/");
+    navigate("/#home");
   }
 
   return (

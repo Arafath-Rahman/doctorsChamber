@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <div className="home-container banner-bg pb-5 overflow-hidden">
-        <div className="container row mx-auto mb-5">
+        <div id='home' className="container row mx-auto mb-5">
           <div className="col col-md-7 mt-3 mt-md-0 order-md-1 order-2 d-flex flex-column align-items-center justify-content-end">
             <div className="">
               <p className="fs-3 text-muted fw-light mb-0">

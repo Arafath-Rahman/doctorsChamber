@@ -1,17 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "./Checkout.css";
 
 const Checkout = () => {
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { serviceName } = useParams();
+  const navigate = useNavigate();
+  const { register, reset, handleSubmit } = useForm();
 
-  const onCheckoutSubmit = (data) => {
+  const onCheckoutSubmit = async (data) => {
     toast.success("Thank you for Booking!", {
       position: "top-center",
       autoClose: 1000,
@@ -21,12 +19,13 @@ const Checkout = () => {
       draggable: true,
       progress: undefined,
     });
-    reset();
+    await reset();
+    navigate('/')
   };
 
   return (
     <div className="auth-container container d-flex flex-column w-50 border rounded-3 mb-5 p-5">
-      <h2 className="text-center mb-5">Checkout</h2>
+      <h2 className="text-center mb-5">Checkout : {serviceName || "Select a Service"}</h2>
       <form onSubmit={handleSubmit(onCheckoutSubmit)}>
         <input
           type="text"
@@ -50,16 +49,10 @@ const Checkout = () => {
         />{" "}
         <br />
         <input
-          type="password"
-          {...register("password", {
-            required: "*Password is required",
-            minLength: {
-              value: 6,
-              message: "*Password must be at-least 6 characters long",
-            },
-          })}
-          placeholder="Password"
-          id="password"
+          type="text"
+          {...register("address")}
+          placeholder="Your Address"
+          id="name"
         />{" "}
         <br />
         <input type="submit" id="submit" value="Book Now" />
