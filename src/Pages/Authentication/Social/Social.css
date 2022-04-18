@@ -1,0 +1,20 @@
+.btn-social-facebook {
+  background-color: #fff;
+}
+.btn-social-facebook:hover {
+  background-color: #55bbf1;
+}
+.btn-social-github {
+  background-color: #fff;
+}
+.btn-social-github:hover {
+  background-color: #555555;
+}
+.btn-social-google {
+  background-color: #fff;
+}
+.btn-social-google:hover {
+  background-color: #ffd67b;
+}
+
+/* bg-[#B9CED5] px-4 mb-2 hover:bg-[#55BBF1] */

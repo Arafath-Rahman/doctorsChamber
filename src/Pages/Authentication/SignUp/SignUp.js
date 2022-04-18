@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
+import Social from "../Social/Social";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -76,12 +77,19 @@ const SignUp = () => {
           id="password"
         />{" "}
         <br />
-        <p className="p-error text-danger">{errors.password?.message}</p>
+        <p className="p-error text-danger">{errors.password?.message || signUpError?.message}</p>
         <p className="my-2">
           Already have an account? <Link to="/login">Login here.</Link>
         </p>
+        {}
         <input type="submit" id="submit" value="SIGNUP" />
       </form>
+      <div className="d-flex align-items-center justify-content-center mt-4">
+        <div style={{height: '1px'}} className="bg-info w-25 mx-3"></div>
+        <span>Or</span>
+        <div style={{height: '1px'}} className="bg-info w-25 mx-3"></div>
+      </div>
+      <Social></Social>
     </div>
   );
 };

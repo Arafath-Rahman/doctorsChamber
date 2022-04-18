@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
+import Social from "../Social/Social";
 import "./Login.css";
 
 const Login = () => {
@@ -79,6 +80,12 @@ const Login = () => {
         </p>
         <input type="submit" id="submit" value="Login" />
       </form>
+      <div className="d-flex align-items-center justify-content-center mt-4">
+        <div style={{height: '1px'}} className="bg-info w-25 mx-3"></div>
+        <span>Or</span>
+        <div style={{height: '1px'}} className="bg-info w-25 mx-3"></div>
+      </div>
+      <Social></Social>
     </div>
   );
 };
