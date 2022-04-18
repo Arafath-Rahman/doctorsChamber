@@ -1,30 +1,59 @@
 import React from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import auth from "../../../firebase.init";
 import "./Login.css";
 
 const Login = () => {
+  const [signInWithEmailAndPassword, signInUser, signInLoading, signInError] =
+    useSignInWithEmailAndPassword(auth);
+  let navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onLoginSubmit = (data) => {
-    console.log(data);
+  const onLoginSubmit = ({ email, password }) => {
+    signInWithEmailAndPassword(email, password);
   };
 
+  if(signInLoading) {
+    return <h1>Loading...........</h1>
+  }
+  
+  if (signInUser) {
+    // toast.success("Logged in Successfully!", {
+    //   position: "top-center",
+    //   autoClose: 1000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
+    reset();
+    navigate(from, { replace: true });
+  }
+  
   return (
     <div className="auth-container container d-flex flex-column w-50 border rounded-3 mb-5 p-5">
-    <h2 className="text-center mb-5">Login</h2>
+      <h2 className="text-center mb-5">Login</h2>
       <form onSubmit={handleSubmit(onLoginSubmit)}>
         <input
           type="email"
           {...register("email", {
             required: "*Email is required",
             pattern: {
-              value: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              message: '*Provide an valid email'
+              value:
+                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              message: "*Provide an valid email",
             },
           })}
           placeholder="Email"
@@ -45,11 +74,23 @@ const Login = () => {
           id="password"
         />{" "}
         <br />
-        <p className="p-error text-danger">{errors.password?.message}</p>
-        <p className="my-2">Need an account? <Link to='/signup'>SignUp here.</Link></p>
+        <p className="p-error text-danger">{errors.password?.message || signInError?.message}</p>
+        <p className="my-2">
+          Need an account? <Link to="/signup">SignUp here.</Link>
+        </p>
         <input type="submit" id="submit" value="Login" />
       </form>
-
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };

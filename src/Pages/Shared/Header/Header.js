@@ -1,10 +1,15 @@
+import { signOut } from "firebase/auth";
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import auth from "../../../firebase.init";
 import CustomLink from "../CustomLink/CustomLink";
 import "./Header.css";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
+  
   return (
     <div className="header-bg bg-transparent">
       <Navbar
@@ -40,13 +45,20 @@ const Header = () => {
               <CustomLink className="text-dark me-3 " to="about">
                 About
               </CustomLink>
+              <CustomLink className="text-dark me-3 " to="checkout">
+                Checkout
+              </CustomLink>
             </Nav>
             <Nav className="d-flex align-items-start gap-2">
               <div className="vr bg-white border border-dark border-2 d-none d-md-block me-2" />
               <div className="d-flex justify-content-center align-items-center mx-auto gap-2">
-                <Link className="text-dark text-decoration-none btn rounded-pill" to="login" id='btn-login'>
+                {
+                  user ? <Link onClick={()=> signOut(auth)} className="text-dark text-decoration-none btn rounded-pill" to="login" id='btn-login'>
+                  Sign Out
+                </Link> : <Link className="text-dark text-decoration-none btn rounded-pill" to="login" id='btn-login'>
                   Login
                 </Link>
+                }
                 <img
                   alt=""
                   src={require("../../../Asset/images/user.png")}

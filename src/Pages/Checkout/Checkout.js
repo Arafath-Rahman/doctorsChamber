@@ -1,14 +1,9 @@
 import React from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import auth from "../../../firebase.init";
-import "./SignUp.css";
+import "./Checkout.css";
 
-const SignUp = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+const Checkout = () => {
   const {
     register,
     reset,
@@ -16,29 +11,23 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSignUpSubmit = (data) => {
-    const { name, email, password } =  data;
-    console.log(name, email, password);
-    createUserWithEmailAndPassword(email, password);
-    if (user) {
-      toast.success('Signup Successful!', {
-        position: "top-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
-        reset();
-    }
-    
+  const onCheckoutSubmit = (data) => {
+    toast.success("Thank you for Booking!", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    reset();
   };
 
   return (
     <div className="auth-container container d-flex flex-column w-50 border rounded-3 mb-5 p-5">
-      <h2 className="text-center mb-5">SignUp</h2>
-      <form onSubmit={handleSubmit(onSignUpSubmit)}>
+      <h2 className="text-center mb-5">Checkout</h2>
+      <form onSubmit={handleSubmit(onCheckoutSubmit)}>
         <input
           type="text"
           {...register("name")}
@@ -60,7 +49,6 @@ const SignUp = () => {
           id="email"
         />{" "}
         <br />
-        <p className="p-error text-danger">{errors.email?.message}</p>
         <input
           type="password"
           {...register("password", {
@@ -74,11 +62,7 @@ const SignUp = () => {
           id="password"
         />{" "}
         <br />
-        <p className="p-error text-danger">{errors.password?.message}</p>
-        <p className="my-2">
-          Already have an account? <Link to="/login">Login here.</Link>
-        </p>
-        <input type="submit" id="submit" value="SIGNUP" />
+        <input type="submit" id="submit" value="Book Now" />
       </form>
       <ToastContainer
         position="top-center"
@@ -95,4 +79,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Checkout;
