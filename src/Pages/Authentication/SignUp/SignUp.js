@@ -12,7 +12,7 @@ const SignUp = () => {
   let loadingElement;
   const navigate = useNavigate();
   const [createUserWithEmailAndPassword, signUpUser, signUpLoading, signUpError] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const {
     register,
     reset,

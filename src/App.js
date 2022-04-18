@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -21,7 +21,8 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/services" element={<Services />}></Route>
+        <Route path="/services" element={<Services />}>
+        </Route>
         <Route path="/blogs" element={<Blogs />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -33,7 +34,9 @@ function App() {
               <Checkout />
             </RequireAuth>
           }
-        ></Route>
+        >
+          <Route path=":serviceId" element={<Checkout />}></Route>
+        </Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <Footer></Footer>
@@ -48,6 +51,7 @@ function App() {
         draggable
         pauseOnHover
       />
+      <Outlet />
     </div>
   );
 }

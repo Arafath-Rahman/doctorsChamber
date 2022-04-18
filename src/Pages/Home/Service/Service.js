@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "./Service.css";
 
 const Service = ({ service }) => {
   const { id, name, price, img, description } = service;
   return (
     <div className="">
-      <div className="card" style={{ width: "18rem", height: "30rem" }}>
+      <div className="card" style={{ width: "18rem", height: "31rem" }}>
         <img
           src={img}
           style={{ width: "88%", height: "220px" }}
@@ -20,19 +20,21 @@ const Service = ({ service }) => {
             <small>
               {description.length < 150
                 ? description
-                : description.slice(0, 150)}
+                : description.slice(0, 150)+"..."}
             </small>
           </p>
         </div>
-        <div className="card-footer btn" id="btn-select">
+        <div className="card-footer">
           <Link
-            className="text-decoration-none text-dark fw-bold"
-            to={`/${id}`}
+            className="btn text-decoration-none text-dark fw-bold"
+            to={`/checkout/${id}`}
+            id="btn-select"
           >
             Select Service
           </Link>
         </div>
       </div>
+      <Outlet />
     </div>
   );
 };
