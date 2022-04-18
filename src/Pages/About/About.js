@@ -35,7 +35,7 @@ const About = () => {
         </div>
       </div>
       <div>
-        <h3 className=" font-monospace text-center my-5 fw-light text-info text-decoration-underline">
+        <h3 className=" font-monospace text-center my-5 fw-light text-success text-decoration-underline">
           About the Developer
         </h3>
       </div>
