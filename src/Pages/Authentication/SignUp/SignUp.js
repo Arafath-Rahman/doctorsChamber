@@ -1,12 +1,65 @@
-import React from 'react';
-import './SignUp.css';
+import React from "react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import "./SignUp.css";
 
-const SignUP = () => {
+const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onLoginSubmit = (data) => {
+    console.log(data);
+  };
   return (
-    <div>
-      <h2>SignUp</h2>
+    <div className="auth-container container d-flex flex-column w-50 border rounded-3 mb-5 p-5">
+      <h2 className="text-center mb-5">SignUp</h2>
+      <form onSubmit={handleSubmit(onLoginSubmit)}>
+        <input
+          type="text"
+          {...register("name")}
+          placeholder="Your Name"
+          id="name"
+        />{" "}
+        <br />
+        <input
+          type="email"
+          {...register("email", {
+            required: "*Email is required",
+            pattern: {
+              value:
+                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              message: "*Provide an valid email",
+            },
+          })}
+          placeholder="Email"
+          id="email"
+        />{" "}
+        <br />
+        <p className="p-error text-danger">{errors.email?.message}</p>
+        <input
+          type="password"
+          {...register("password", {
+            required: "*Password is required",
+            minLength: {
+              value: 6,
+              message: "*Password must be at-least 6 characters long",
+            },
+          })}
+          placeholder="Password"
+          id="password"
+        />{" "}
+        <br />
+        <p className="p-error text-danger">{errors.password?.message}</p>
+        <p className="my-2">
+          Already have an account? <Link to="/login">Login here.</Link>
+        </p>
+        <input type="submit" id="submit" value="SIGNUP" />
+      </form>
     </div>
   );
 };
 
-export default SignUP;
+export default SignUp;

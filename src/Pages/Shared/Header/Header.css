@@ -5,7 +5,19 @@
     ),
     url("../../../Asset/images/abstract.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left top;
-  background-color: transparent;
+  background-position: cover;
+}
+#btn-login {
+  background: #b8e5cb;
+  color: #d78e62;
+  text-transform: uppercase;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#btn-login:hover {
+  background: #d78e62;
+  color: #b8e5cb;
 }

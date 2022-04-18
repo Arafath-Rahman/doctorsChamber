@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -10,11 +11,11 @@ const Login = () => {
   } = useForm();
 
   const onLoginSubmit = (data) => {
-    console.log(data, errors);
+    console.log(data);
   };
 
   return (
-    <div className="login-container container d-flex flex-column w-50 border rounded-3 mb-5 p-5">
+    <div className="auth-container container d-flex flex-column w-50 border rounded-3 mb-5 p-5">
     <h2 className="text-center mb-5">Login</h2>
       <form onSubmit={handleSubmit(onLoginSubmit)}>
         <input
@@ -45,8 +46,10 @@ const Login = () => {
         />{" "}
         <br />
         <p className="p-error text-danger">{errors.password?.message}</p>
+        <p className="my-2">Need an account? <Link to='/signup'>SignUp here.</Link></p>
         <input type="submit" id="submit" value="Login" />
       </form>
+
     </div>
   );
 };

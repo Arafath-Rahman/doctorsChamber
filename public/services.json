@@ -1,0 +1,23 @@
+[
+  {
+    "id": "625cac98a6dd389ab5991e6d",
+    "name": "Online Checkup",
+    "price": 299,
+    "img": "https://i.ibb.co/RPQNnV8/online-checkup.png",
+    "description": "Online Checkup is really helpful if there is no emergency case. Book your seat and get your checkup done. Stay healthy!"
+  },
+  {
+    "id": "625cac9851ce46ab04c09057",
+    "name": "Chamber Checkup",
+    "price": 499,
+    "img": "https://i.ibb.co/fvJn6Hy/chamber-checkup.png",
+    "description": "You can visit my chamber to get your checkup/therapy session. Talking face-to-face is always a better option. Take your serial now!"
+  },
+  {
+    "id": "625cac9832ee4a6c1b2bb260",
+    "name": "Medical Coaching",
+    "price": 15000,
+    "img": "https://i.ibb.co/w4RZT9p/teaching.png",
+    "description": "I can help you to get admission in Medical Admission Exam. I have more than 3 years experience in this field. Book your contract now!"
+  }
+]

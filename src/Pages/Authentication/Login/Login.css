@@ -1,17 +1,21 @@
-.login-container {
+.auth-container {
   margin-top: 100px;
 }
 #email,
 #password,
-#submit {
+#submit,
+#name {
   display: block;
   box-sizing: border-box;
   width: 100%;
   border-radius: 4px;
   border: 1px solid lightgray;
   padding: 10px 15px;
-  margin-bottom: 10px;
   font-size: 14px;
+}
+
+#name {
+  margin-bottom: 10px;
 }
 
 #submit {
@@ -21,9 +25,10 @@
   border: none;
   margin-top: 40px;
   padding: 20px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: 12px;
+  letter-spacing: 10px;
+  text-align: center;
 }
 
 #submit:hover {

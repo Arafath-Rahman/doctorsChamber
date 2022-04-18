@@ -1,0 +1,18 @@
+.price {
+  color: #d78e62;
+  font-weight: 700;
+}
+
+.card-footer {
+  border: none;
+  background-color: #fff;
+}
+
+#btn-select {
+  background: #bde6d1;
+  font-weight: 600;
+}
+
+#btn-select:hover {
+  background: #eb7954;
+}

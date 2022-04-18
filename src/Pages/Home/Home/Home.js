@@ -25,7 +25,7 @@ const Home = () => {
                 </small>
               </p>
               <div className="text-center">
-                <Button className="fw-bold rounded-pill px-3 py-2 mt-3" variant="outline-info">Make Appointment</Button>{" "}
+                <Button id='btn-appointment' className="text-dark rounded-pill px-5 py-3 mt-3 border-0">Make Appointment</Button>{" "}
               </div>
             </div>
           </div>

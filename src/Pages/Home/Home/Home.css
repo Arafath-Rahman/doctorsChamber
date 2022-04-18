@@ -10,3 +10,12 @@
   background-size: cover;
   position: relative;
 }
+
+#btn-appointment {
+  background: #bde6d1;
+  font-weight: 600;
+}
+
+#btn-appointment:hover {
+  background: #eb7954;
+}

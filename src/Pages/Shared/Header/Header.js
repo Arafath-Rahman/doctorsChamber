@@ -6,7 +6,7 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <div className="header-bg mb-5">
+    <div className="header-bg mb-5 bg-transparent">
       <Navbar
         className="color-nav top-3 header-bg fixed-top"
         variant="light"
@@ -44,7 +44,7 @@ const Header = () => {
             <Nav className="d-flex align-items-start gap-2">
               <div className="vr bg-white border border-dark border-2 d-none d-md-block me-2" />
               <div className="d-flex justify-content-center align-items-center mx-auto gap-2">
-                <Link className="text-dark text-decoration-none btn btn-outline-info rounded-pill" to="login">
+                <Link className="text-dark text-decoration-none btn rounded-pill" to="login" id='btn-login'>
                   Login
                 </Link>
                 <img
