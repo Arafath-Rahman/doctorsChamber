@@ -1,13 +1,16 @@
 import React from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 import "./SignUp.css";
 
 const SignUp = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  let loadingElement;
+  const navigate = useNavigate();
+  const [createUserWithEmailAndPassword, signUpUser, signUpLoading, signUpError] =
     useCreateUserWithEmailAndPassword(auth);
   const {
     register,
@@ -17,26 +20,25 @@ const SignUp = () => {
   } = useForm();
 
   const onSignUpSubmit = (data) => {
-    const { name, email, password } =  data;
+    const { name, email, password } = data;
     console.log(name, email, password);
     createUserWithEmailAndPassword(email, password);
-    if (user) {
-      toast.success('Signup Successful!', {
-        position: "top-center",
-        autoClose: 1000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
-        reset();
-    }
-    
   };
+  
+  if (signUpLoading) {
+    loadingElement = <LoadingSpinner></LoadingSpinner>;
+  }
+  if (signUpUser) {
+    toast.success('SignUp Successful.', {
+      toastId: 'success1',
+    });
+    reset();
+    navigate("/");
+  }
 
   return (
     <div className="auth-container container d-flex flex-column w-50 border rounded-3 mb-5 p-5">
+      {loadingElement}
       <h2 className="text-center mb-5">SignUp</h2>
       <form onSubmit={handleSubmit(onSignUpSubmit)}>
         <input
@@ -80,17 +82,6 @@ const SignUp = () => {
         </p>
         <input type="submit" id="submit" value="SIGNUP" />
       </form>
-      <ToastContainer
-        position="top-center"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };

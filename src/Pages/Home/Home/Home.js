@@ -25,13 +25,21 @@ const Home = () => {
                 </small>
               </p>
               <div className="text-center">
-                <Button id='btn-appointment' className="text-dark rounded-pill px-5 py-3 mt-3 border-0">Make Appointment</Button>{" "}
+                <Button
+                  id="btn-appointment"
+                  className="text-dark rounded-pill px-5 py-3 mt-3 border-0"
+                >
+                  Make Appointment
+                </Button>{" "}
               </div>
             </div>
           </div>
           <div className="col col-md-5 order-md-2 order-1">
             <div className="mt-1">
-              <img src={require("../../../Asset/images/bappi-1.png")} alt="banner" />
+              <img
+                src={require("../../../Asset/images/bappi-1.png")}
+                alt="banner"
+              />
             </div>
           </div>
         </div>

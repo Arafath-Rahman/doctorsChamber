@@ -2,15 +2,18 @@ import React from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 import "./Login.css";
 
 const Login = () => {
+  let loadingElement;
   const [signInWithEmailAndPassword, signInUser, signInLoading, signInError] =
     useSignInWithEmailAndPassword(auth);
   let navigate = useNavigate();
   let location = useLocation();
+
   let from = location.state?.from?.pathname || "/";
 
   const {
@@ -22,28 +25,24 @@ const Login = () => {
 
   const onLoginSubmit = ({ email, password }) => {
     signInWithEmailAndPassword(email, password);
+    reset();
+    
   };
 
-  if(signInLoading) {
-    return <h1>Loading...........</h1>
+  if (signInLoading) {
+    loadingElement = <LoadingSpinner></LoadingSpinner>;
   }
-  
-  if (signInUser) {
-    // toast.success("Logged in Successfully!", {
-    //   position: "top-center",
-    //   autoClose: 1000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    // });
-    reset();
+
+  if(signInUser){
+    toast.success('Login Successful.', {
+      toastId: 'success1',
+    });
     navigate(from, { replace: true });
   }
   
   return (
     <div className="auth-container container d-flex flex-column w-50 border rounded-3 mb-5 p-5">
+    {loadingElement}
       <h2 className="text-center mb-5">Login</h2>
       <form onSubmit={handleSubmit(onLoginSubmit)}>
         <input
@@ -80,17 +79,6 @@ const Login = () => {
         </p>
         <input type="submit" id="submit" value="Login" />
       </form>
-      <ToastContainer
-        position="top-center"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };
