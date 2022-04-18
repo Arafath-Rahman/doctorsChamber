@@ -1,3 +1,7 @@
+.home-container {
+  margin-top: 66px;
+}
+
 .banner-bg {
   background-image: linear-gradient(
       rgba(255, 255, 255, 0),
@@ -6,9 +10,8 @@
     url("../../../Asset/images/abstract.jpg");
   height: auto;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: cover;
   background-size: cover;
-  position: relative;
 }
 
 #btn-appointment {

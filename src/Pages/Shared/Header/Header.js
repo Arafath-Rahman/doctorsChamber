@@ -6,11 +6,11 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <div className="header-bg mb-5 bg-transparent">
+    <div className="header-bg bg-transparent">
       <Navbar
         className="color-nav top-3 header-bg fixed-top"
         variant="light"
-        expand={"md"}
+        expand={"lg"}
       >
         <Container>
           <Navbar.Brand
